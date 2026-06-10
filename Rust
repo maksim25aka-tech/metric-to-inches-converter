@@ -1,0 +1,27 @@
+[package]
+name = "converter"
+version = "0.1.0"
+edition = "2021"
+use std::io;
+
+fn main() {
+    println!("=== Metric to Inches Converter (Rust) ===");
+    let unit = read_line("Enter unit (cm/m): ");
+    let value: f64 = read_line("Enter value: ").trim().parse().expect("Invalid number");
+    let result = match unit.trim() {
+        "cm" => value / 2.54,
+        "m"  => value * 39.3700787,
+        _    => {
+            println!("Error: unknown unit.");
+            return;
+        }
+    };
+    println!("{} {} = {:.4} inches", value, unit.trim(), result);
+}
+
+fn read_line(prompt: &str) -> String {
+    println!("{}", prompt);
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+    input
+}

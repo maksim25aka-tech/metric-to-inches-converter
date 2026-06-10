@@ -1,0 +1,38 @@
+
+### Общее описание
+
+Конвертер запрашивает у пользователя:
+- единицу измерения: `cm` (сантиметры) или `m` (метры)
+- значение (число с плавающей точкой)
+- выводит результат в дюймах (1 дюйм = 2.54 см, 1 м = 39.3700787 дюйма)
+
+---
+
+### 1. Python
+
+```python
+# 01-python/converter.py
+def cm_to_inches(cm):
+    return cm / 2.54
+
+def m_to_inches(m):
+    return m * 39.3700787
+
+def main():
+    print("=== Metric to Inches Converter (Python) ===")
+    unit = input("Enter unit (cm/m): ").strip().lower()
+    try:
+        value = float(input("Enter value: "))
+        if unit == "cm":
+            result = cm_to_inches(value)
+            print(f"{value} cm = {result:.4f} inches")
+        elif unit == "m":
+            result = m_to_inches(value)
+            print(f"{value} m = {result:.4f} inches")
+        else:
+            print("Error: unknown unit. Use 'cm' or 'm'.")
+    except ValueError:
+        print("Error: invalid number.")
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,23 @@
+// 07-csharp/Program.cs
+using System;
+
+class Program {
+    static void Main() {
+        Console.WriteLine("=== Metric to Inches Converter (C#) ===");
+        Console.Write("Enter unit (cm/m): ");
+        string unit = Console.ReadLine().Trim().ToLower();
+        Console.Write("Enter value: ");
+        if (!double.TryParse(Console.ReadLine(), out double value)) {
+            Console.WriteLine("Error: invalid number.");
+            return;
+        }
+        double result;
+        if (unit == "cm") result = value / 2.54;
+        else if (unit == "m") result = value * 39.3700787;
+        else {
+            Console.WriteLine("Error: unknown unit.");
+            return;
+        }
+        Console.WriteLine($"{value} {unit} = {result:F4} inches");
+    }
+}

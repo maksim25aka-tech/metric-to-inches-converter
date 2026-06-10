@@ -1,0 +1,26 @@
+// 03-go/converter.go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("=== Metric to Inches Converter (Go) ===")
+    var unit string
+    var value float64
+    fmt.Print("Enter unit (cm/m): ")
+    fmt.Scan(&unit)
+    fmt.Print("Enter value: ")
+    fmt.Scan(&value)
+
+    var result float64
+    switch unit {
+    case "cm":
+        result = value / 2.54
+    case "m":
+        result = value * 39.3700787
+    default:
+        fmt.Println("Error: unknown unit.")
+        return
+    }
+    fmt.Printf("%.4f %s = %.4f inches\n", value, unit, result)
+}

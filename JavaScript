@@ -1,0 +1,30 @@
+// 02-javascript/converter.js
+const readline = require('readline');
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+
+function question(query) {
+    return new Promise(resolve => rl.question(query, resolve));
+}
+
+async function main() {
+    console.log("=== Metric to Inches Converter (JS) ===");
+    const unit = (await question("Enter unit (cm/m): ")).trim().toLowerCase();
+    const value = parseFloat(await question("Enter value: "));
+    if (isNaN(value)) {
+        console.log("Error: invalid number.");
+        rl.close();
+        return;
+    }
+    let result;
+    if (unit === "cm") result = value / 2.54;
+    else if (unit === "m") result = value * 39.3700787;
+    else {
+        console.log("Error: unknown unit.");
+        rl.close();
+        return;
+    }
+    console.log(`${value} ${unit} = ${result.toFixed(4)} inches`);
+    rl.close();
+}
+
+main();

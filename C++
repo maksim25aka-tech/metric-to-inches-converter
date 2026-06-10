@@ -1,0 +1,24 @@
+// 05-cpp/converter.cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    cout << "=== Metric to Inches Converter (C++) ===" << endl;
+    string unit;
+    double value;
+    cout << "Enter unit (cm/m): ";
+    cin >> unit;
+    cout << "Enter value: ";
+    cin >> value;
+
+    double result;
+    if (unit == "cm") result = value / 2.54;
+    else if (unit == "m") result = value * 39.3700787;
+    else {
+        cout << "Error: unknown unit." << endl;
+        return 1;
+    }
+    cout << value << " " << unit << " = " << result << " inches" << endl;
+    return 0;
+}
